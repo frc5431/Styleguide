@@ -6,9 +6,6 @@ To make this more entertaining, there will be a variety of comics spread through
 ![](https://imgs.xkcd.com/comics/standards.png)
 
 
-#Team 5431 Coding Standard
-##Naming Scheme
-
 ![](http://www.commitstrip.com/wp-content/uploads/2016/09/Strip-Le-stagiaire-et-la-variable-english650-final.jpg)
 
 You will use camelCase for names of functions and variables, which means no underscores, and every word but the first is capitalized.
@@ -78,7 +75,6 @@ Abbreviations should not be used, except for a few special cases. They are as fo
 
 Other approved abbreviations are those that are very commonly used, like DNS for Dynamic Name Service, HTTP for HyperText Transfer Protocol, XML for eXtensible Markup Language, JSON for JavaScript Object Notation, etc.
 
-##Whitespace
 ![](https://imgs.xkcd.com/comics/third_way.png)
 This is a constant dispute throughout programmming. We will lay down the law right here right now.
 ###Tabs vs Spaces
@@ -189,7 +185,6 @@ int longVariable = gatherAshes(
                   .almostThere().thereWeAre);
 ```
 
-##Classes
 ###Visiblity
 ![](https://imgs.xkcd.com/comics/code_quality_2.png)
 
@@ -250,3 +245,8 @@ std::endl flushes the output stream. If you don't want to flush, use \n.
 Never type `using namespace`, as it pollutes the global namespace.
 
 The only time you should use `using` is to replace typedef.
+
+##main
+`main()` should always return 0 if the program executed sucessfully. Specific error codes can be returned.
+
+`main()` should not be too long, and no actual computations should be done there. It must only call functions.

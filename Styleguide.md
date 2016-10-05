@@ -218,7 +218,7 @@ Structs should be used for Plain Old Data (POD), or when the type simply acts as
 
 
 ###Operators and Math operations
-This covers what you should do when you want to do math or streams or variable assignments
+Put spaces between all operators
 BAD:
 ```
 std::cout<<"asd"<<1<<"foo"<<std::endl;
@@ -242,3 +242,11 @@ GOOD:
 ```
 std::cout << "Yay" << std::endl << std::endl;
 ```
+
+EXCEPTION:
+std::endl flushes the output stream. If you don't want to flush, use \n.
+
+###Using and typedef
+Never type `using namespace`, as it pollutes the global namespace.
+
+The only time you should use `using` is to replace typedef.

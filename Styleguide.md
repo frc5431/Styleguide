@@ -215,3 +215,30 @@ public:
 ```
 ###Struct vs Class
 Structs should be used for Plain Old Data (POD), or when the type simply acts as a container for variables.
+
+
+###Operators and Math operations
+This covers what you should do when you want to do math or streams or variable assignments
+BAD:
+```
+std::cout<<"asd"<<1<<"foo"<<std::endl;
+int a=(1+b/(s+2));
+```
+
+GOOD:
+```
+std::cout << "Good boy: " << 30 << " Nice..." << std::endl;
+int a = (1 + b / (s + 2) );
+```
+
+###Newline and escape characters
+Please use the builtin escapes via std
+BAD:
+```
+std::cout << "Yay\n\n";
+```
+
+GOOD:
+```
+std::cout << "Yay" << std::endl << std::endl;
+```

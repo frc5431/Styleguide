@@ -2,11 +2,15 @@ We need to establish a coding standard, so all of our code looks the same. This 
 
 # Standards
 
-To make this more entertaining, there will be a variety of comics spread throughout this page.
 ![](https://imgs.xkcd.com/comics/standards.png)
 
+## Code Formatting
+
+### Variable names
 
 ![](http://www.commitstrip.com/wp-content/uploads/2016/09/Strip-Le-stagiaire-et-la-variable-english650-final.jpg)
+
+#### Functions and variables formatting
 
 You will use camelCase for names of functions and variables, which means no underscores, and every word but the first is capitalized.
 
@@ -37,6 +41,50 @@ int pidControllerState
 int currentTime
 int keyIterator
 ```
+
+#### Constants Formatting
+
+Constants are in ALL_UPPERCASE_WITH_UNDERSCORES
+
+#### Classes
+
+A `class` is PascalCase, which means no spaces, and every word is capitalized, including the first. An `interface` follows the same rules.
+
+EXAMPLE:
+BAD:
+```java
+class FoObAR {
+class foo_bar {
+class fooBar {
+```
+GOOD:
+```java
+class FooBar {
+```
+
+#### Enums
+
+When making an `enum`, it follows the same rules for naming as a `class`. The values of the `enum` follows the rules for constant.
+
+EXAMPLE:
+BAD:
+```java
+enum FOO{
+  Bar,
+  wOaWvEr,
+  baz
+}
+```
+GOOD:
+```java
+enum Foo {
+  BAR,
+  WOAWVER,
+  BAZ
+}
+```
+
+#### General Rules
 
 Names shouldn't be too long. If they come out to be huge, use an appropriate acronym, or more preferably, find a way to make it shorter. If you can't make it shorter and keep the original meaning, comment its actual purpose.
 
@@ -75,14 +123,17 @@ Abbreviations should not be used, except for a few special cases. They are as fo
 
 Other approved abbreviations are those that are very commonly used, like DNS for Dynamic Name Service, HTTP for HyperText Transfer Protocol, XML for eXtensible Markup Language, JSON for JavaScript Object Notation, etc.
 
+**EXCEPTION:** if you are writing a `for` loop, `i`, `j`, `x`, and `y` are acceptable iterator names.
+
 ![](https://imgs.xkcd.com/comics/third_way.png)
-This is a constant dispute throughout programmming. We will lay down the law right here right now.
+
 ### Tabs vs Spaces
-We will use tabs.
+
+We will use tabs, which will be equal to 4 spaces.
 
 ### Brackets
 
-When typing anything that requires curly brackets (conditionals, loops, functions, classes, etc), the first bracket goes on the same line as the definition.
+When typing anything that requires curly brackets (conditionals, loops, functions, classes, etc), the first bracket goes on the same line as the definition. There is a space between the curly bracket and the end of the definition
 BAD:
 ```java
 void wombatEater()
@@ -94,10 +145,12 @@ void wombatEater()
 
 
 {
+
+void wombatEater(){//needs a space between bracket and wombatEater()
 ```
 GOOD:
 ```java
-void wombatEater(){
+void wombatEater() {
 ```
 
 The second curly bracket will have its own line after the last line of the function
@@ -110,10 +163,13 @@ foo();}
 ```
 GOOD:
 ```java
-void wombatEater(){
+void wombatEater() {
   foo();
 }
 ```
+
+**EXCEPTION:** If a function is empty, it is okay to use `{}` syntax on the same line
+
 Each time an opening curly bracket is encountered, indent by an extra tab.
 
 EXAMPLE:
@@ -129,10 +185,67 @@ int wombatEater(){
 }
 ```
 
-### Else-if Whitespace
+### If
+
+`if` statements always have curly brackets on seperate lines. Even if they are one line statements.
+
+EXAMPLE:
+BAD:
+```java
+if(condition) code();
+
+if(condition) { code(); }
+```
+GOOD:
+```java
+if(condition) {//don't forget the space!
+  code();
+}
+```
+
+*REASONING:*
+There is a very important reason for this seemingly petty rule. It clarifies a lot of confusion.
+
+For example, this code is very confusing at first glance:
+```java
+if(condition) foo(); bar(); //WARNING: bar() is NOT part of the if statement!
+```
+
+With this style guide, the above code will become much clearer:
+```java
+if(condition) {
+  foo();
+}
+bar();
+```
+
+Another example of why this rule is absolutely important is because of what happend to OSX developers. They had some code which checked the signature of an SSL certificate. For those who don't know what that is, the function checked if an encryption was valid. Here was the code (in C:)
+```c
+hashOut.data = hashes + SSL_MD5_DIGEST_LEN;
+hashOut.length = SSL_SHA1_DIGEST_LEN;
+if ((err = SSLFreeBuffer(&hashCtx)) != 0)
+    goto fail;
+if ((err = ReadyHash(&SSLHashSHA1, &hashCtx)) != 0)
+    goto fail;
+if ((err = SSLHashSHA1.update(&hashCtx, &clientRandom)) != 0)
+    goto fail;
+if ((err = SSLHashSHA1.update(&hashCtx, &serverRandom)) != 0)
+    goto fail;
+if ((err = SSLHashSHA1.update(&hashCtx, &signedParams)) != 0)
+    goto fail;
+    goto fail;  /* MISTAKE! THIS LINE SHOULD NOT BE HERE */
+if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0)
+    goto fail;
+
+err = sslRawVerify(...);
+```
+
+Notice that the second `goto fail` always ran. This was a typo by OSX developers that actually opened up a HUGE security vulnerability. By always putting curly brackets, you prevent very hard-to-find errors such as this.
+
+### Else
 ![](https://imgs.xkcd.com/comics/code_quality.png)
 
-If you have an else-if the closing bracket and the else goes on the same line
+If you have an else-if the closing bracket and the else goes on the same line. Spaces go after the brackets.
 
 BAD:
 ```java
@@ -149,10 +262,11 @@ if()
 ```
 GOOD:
 ```java
-}else if(){
+} else if() {
 
-}else{
+} else{
 ```
+
 ### Long lines
 Lines should not be unreasonably long. Use common sense to determine how long a line is. If it is too long, add new lines in between, and indent to be the same indentation level. This is also true with function arguments. Each level of parenthesis is a new indentation level.
 
@@ -172,6 +286,7 @@ int longVariable = gatherAshes(
 ```
 
 ### Operators and Math operations
+
 Put spaces between all operators and math operations so it doesn't look like a bunch of jumbled up math. Don't put spaces for parenthesis.
 <br>
 BAD:
@@ -186,8 +301,9 @@ System.out.println("hello" + Blah.SPACE + "world");
 int a = (1 + b / (s + 2));
 ```
 
-###Newline and escape characters
-Instead of `\n`, use System.lineSeperator()<br>
+### Newline and escape characters
+
+Instead of `\n` or `\r\n`, use System.lineSeperator()<br>
 
 BAD:
 ```java
@@ -200,6 +316,7 @@ Sysgem.out.println("Hello!" + System.lineSeperator());
 ```
 
 ### Comments
+
 Comments can get hazy and a little more hazy depending on the program you are using. We would really
 appreciate it if all coders follow these standards for commenting code. We will dedicate one person as
 the code documenter and manager. To make sure the current code follows all of these standards.
@@ -226,7 +343,7 @@ int motrPortTwo = 543; //Same as above, mapped to right motor
 System.out.println(motorPortOne + System.lineSeperator() + motorPortTwo);
 ```
 
-EXCEPTION: The occasional funny joke is allowed, as long as it's not too distracting and replacing actual important comments.
+**EXCEPTION:** The occasional funny joke is allowed, as long as it's not too distracting and replacing actual important comments.
 
 Multiline comments are mainly used for functions, classes, structs, really important stuff and beginning
 of files.
@@ -249,35 +366,365 @@ public class Motor {
    * Careful for explosion of function
    * No errror handling
    */
-  public void setMotorSpeed(int newSpeed);
+  public void setMotorSpeed(int newSpeed){
+    ...
+  }
 }
 ```
 
-Licensing and Credit. People do want credit for their own credit and work for their code.
-Yet you can't just assume code is yours so Titan Robotics will have their own license that should be
-included as a file in every project in the organization as well a small description within each file. <br>
-EXAMPLE: <br>
-```java
-/* =========================================================================
+Every function you write should have a JavaDoc comment documenting:
+ * Parameters
+ * Return value
+ * Exceptions thrown
+ * Preconditions/postconditions of params
+ * Behavior of function
 
-Program:   Robotics Tools and Kits Toolkit
-Module:    mainRobotCode.java
-Creator:   Robotics Programming
-Date:      Oct(10). 10, 2016
+### Main code
 
-Copyright (c) Titan Robotics, blah, blah
-All rights reserved.
-Look at the man standing over there
-
-This software is distributed WITHOUT ANY WARRANTY; without even
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE.  See the above copyright notice for more information.
-
-========================================================================= */
-```
-
-
-###Main code
 `main()` should always return 0 if the program executed sucessfully. Specific error codes can be returned.
 
 `main()` should not be too long, and no actual computations should be done there. It must only call functions.
+
+### Loops
+
+Put spaces in between mathmatical operators as if they are alone.
+
+Put spaces after semicolons.
+
+EXAMPLE:
+BAD:
+```java
+for(int i=0;i<100;i++){
+  //code
+}
+```
+GOOD:
+```java
+for(int i = 0; i < 100; ++i) {
+  //code
+}
+```
+
+In a `for` loop, instead of `i++`, try `++i`. The latter has one less operation.
+
+EXAMPLE:
+BAD:
+```java
+for(int i = 0; i < 3; i++) {
+  //code
+}
+```
+GOOD:
+```java
+for(int i = 0; i < 3; ++i) {
+  //code
+}
+```
+
+**EXCEPTION:** Whether the `++` goes before or after the variable affects operator precendence. If the postfix version (`i++`) is required for order of operations purpose, use it.
+
+Prefer `while` loops to `do...while`. The former is easier to understand at a glance.
+
+### Goto
+
+![](https://imgs.xkcd.com/comics/goto.png)
+
+No. Do not use `goto`. If this were C, then maybe. But this is Java. If you absolutely have to use a `goto` statement, use a `switch case` instead or restructure your code.
+
+### Switch Case
+
+Do not put spaces in the parenthesis of the `switch` declaration.
+
+The curly bracket goes on the same line with a space after the closing parenthesis.
+
+EXAMPLE:
+BAD:
+```java
+switch ( variable ) {
+
+switch(variable){//no space
+```
+GOOD:
+```java
+switch(variable) {
+```
+
+`case` is not indented.
+
+Always put `break` unless you intend fallthrough. If you are falling through, put each case on seperate lines.
+
+Always put a `default` case. `default` should always be the very last case, no matter what.
+
+EXAMPLE:
+BAD:
+```java
+case A:
+  case B: case C: 
+  //code
+  break;
+default:
+case D: 
+  //code
+  break;
+```
+GOOD:
+```java
+case A:
+case B:
+case C:
+  //code
+  break;
+case D:
+default:
+  break;
+```
+
+### Initialization
+
+Always try to provide a default constructor if possible.
+
+Always try to initialize variables with their declaration.
+
+### Ordering of members
+
+In a `class`, members will be ordered as following:
+ * Enums
+ * Nested classes
+ * Constants
+ * Static variables
+ * Static functions
+ * Instance variables
+ * Default constructor
+ * Constructor with arguments
+ * Member functions
+ 
+All `public` members go to the top of their respective categories, `protected` goes under `public`, package goes under `protected`, and `private` goes last.
+
+EXAMPLE:
+```java
+class Foo {
+  /**
+  Foonums represents an enum of foos
+  */
+  enum Foonums {
+    FOO1,
+    FOO2,
+    ...
+  }
+  
+  /**
+  ...
+  */
+  public static final int FOOBAR = 3;
+  private static final bool IS_FOO = true;
+  
+  public static VERBOSE_FOO = false;
+  
+  public static void runFoo() {
+    ...
+  }
+  
+  public String fooName = "";
+  private int fooAmount = 2;
+  
+  public Foo() {
+  }
+
+  ...
+}
+```
+
+*REASONING:*
+When you look at a class, the most important thing you usually look for is what you can use. By putting `public` members first, you are allowing people who read your `class` to find what they are usually looking for.
+Having constants first also show configuration for your class.
+Another way of explaining it is that whe people read your class, the want to see the interface of the component, not the implementation. This order puts the public interface before the ugly private implementation.
+Good documentation plus a consistent ordering = easy to read classes
+Also, brains like patterns, so if every file has the same ordering, you will eventually be used to knowing where to scroll to.
+
+## Coding Style
+
+### Mappings
+
+Mappings (such as for that like a joystick or motor) go into a single file, called `Mappings.java`. Every mapping type is organized by category, in the following order:
+ * Buttons
+ * Joysticks
+ * Motors
+ * DIO, Analog, or any other port on RoboRIO
+ * Pneumatics
+ * Other mappings
+ 
+Each section will have a comment with the section name.
+
+Mappings will be `public static final` and follow the naming for a constant.
+
+EXAMPLE:
+```java
+class Mappings {
+  //BUTTONS
+  public static final int BALL_SHOOT = 0;
+  public static final int BALL_LOAD = 1;
+  ...
+
+  //JOYSTICKS
+  public static final int JOY_LEFT = 4;
+  public static final int JOY_RIGHT = 5;
+  ...
+  
+}
+```
+
+*REASONING:*
+Time and time again we get to competition and change a motor or a limit switch and have to change it's ID. Time and time again we forget where we stored the ID. Having one file that is always consistently organized allows you to quickly find the mapping you are looking for.
+
+### Magic constants
+
+![](https://imgs.xkcd.com/comics/int_pi.png)
+
+A magic constant is a literal in your code that doesn't have any meaning or explanation. Here is an example of a magic constant:
+
+```java
+NetworkTable.get("roborio-frc-5431.local");//"roborio-frc-5431.local" is a magic constant
+```
+
+Instead of embedding literals into code, create a constant at the top of the file to reduce spatghetti code and allow for more configurability.
+
+```java
+private static final NETWORKTABLE_LOCATION "roborio-frc-5431.local"
+
+...
+NetworkTable.get(NETWORKTABLE_LOCATION);
+```
+
+### Getters and setters
+
+Never use `public` variables. Always use getters and setters.
+
+`protected` and package variables are okay.
+
+**EXCEPTION:** There are very specific cases in which it's okay to use `public`, however those should be evaluated on a case-by-case basis.
+
+*REASONING:*
+ * Getters and setters provide more verbosity
+ * Can provide argument checking when setting variables
+ * Can check for `null`
+ * More versatility and future-proofing coding
+
+### Casts
+
+Always be as explicit as possible when casting primitive types
+
+### State Machines
+
+Autonomous is to be written with state machines.
+
+Instead of using `int`s to represent state, which has proven annoying and cause more clutter in the end, use `enum`'s.
+
+This fixes the "magic number" problem
+
+EXAMPLE:
+BAD:
+```java
+switch(state) {
+  case 0:
+    //do code
+  case 1://what does 1 mean?
+    state = 3;//what is state 3?
+    break;
+    ...
+}
+```
+GOOD:
+```java
+enum State {
+  DO_NOTHING,
+  GOING_FORWARD,
+  TURNING,
+  AIMING
+  ...
+}
+
+...
+
+switch(state) {
+  case DO_NOTHING:
+    //do code
+  case GOING_FORWARD:
+    state = State.AIMING;
+    break;
+    ...
+}
+```
+
+*REASONING:*
+We have been using state machines for the past 2 years. We are quite used to them and they work well.
+
+Using numbers has created really crazy state machines where you go from state 1 to state 53 to state -3 to state 16. Enums allow for self-documenting code that can also be changed in the future.
+
+### Teleop functionality
+
+Wrap different components of the robot in classes. Save state in variables that can be reset during robot phases. Create all variables in constructor.
+
+For example, the drive base would have a `DriveBase` class. The `DriveBase` creats all of the motors and joysticks using the constants from the `Mappings` class in it's constructor. The contructor would be called in `robotInit()`.
+
+`DriveBase` has a `setMode()` function which takes in an `enum` with at least the following values:
+ * AUTON
+ * TELOP
+
+In `autonInit()`, `setMode(Mode.AUTON)` is called on the `DriveBase` variable. This allows the class to perform any auton-specific changes.
+
+Maybe this could be implemented in an `interface` to allow for helper functions from a standard library
+
+*REASONING:*
+Java is an object-oriented langauge. The robot's components are all different objects. Thus, it makes sense to represent the robot in terms of objects, just like Java intends.
+Classes allow for seperation of implementation and interface from your high level robot code.
+It also provides a level of organization of the file based level.
+Additionally, having components in terms of objects allow you to easily reset the robot. If you want to reinitialize a component on the robot, you just reassign the variable to a `new Class()`
+
+### Robot class
+
+The `Robot` class should have as minimal code as possible. All implementation should be left to other files.
+
+*REASONING:*
+Organizational sake. If you want fix a bug on the shooter for example, you would want to look in `Shooter.java` instead of parsing `Robot.java`.
+
+### Drive Mode
+
+Until a different drive system has been proven effective and drivers have enough time to practice, Tank Drive will be used, with the WPILib `DriveBase` class.
+
+### Reversing a motor
+
+If a motor is going backwards and it's supposed to logically go forward, check your wiring. Adding `.setReversed()` to the code causes spaghettification. If you do, create a new constant `boolean` in `Mappings.java` to specify whether the motor is reversed.
+
+Basically, make sure the `.set(1.0)` always makes the motor logically go at max speed forward in both phases of the game. If it doesn't a quick code change doesn't help
+
+### Do it right the first time
+
+This is difficult for us. We are all guilty of it. That small change that "will be fixed later."
+
+Doing it right the first time prevents stress, breaking down, and bugs later on. It will be hard, but each time you say "I'll fix this later," stop yourself and say "I'll spend 5 minutes now to write it correctly as opposed to spending 10 minutes later fixing it while sleep deprived." You'll thank yourself later when you are sleep deprived staying up until 2 to get Themis a shooter.
+
+## Meta
+
+### Licensing and Credit
+
+People do want credit for their own credit and work for their code.
+Yet you can't just assume code is yours so Titan Robotics will have their own header. The header is located in a file called `LICENSE` in this repo. This header must be present in every file you create for Team 5431. Replace `<class documentation>` with JavaDoc style documentation for the class you are writing, and replace `<your name>` with your own name. 
+
+### Github
+
+![](https://imgs.xkcd.com/comics/git_commit.png)
+
+If you are writing code for Titan Robotics, you must put the code in this organization, `frc5431`. Commit as frequently as possible. Commit titles should be brief, preferably under 50 characters, and commit descriptions should be as descriptive as possible.
+
+If you are writing competition-critical code and competition is coming up, save the best working version to the `master` branch of the repo. Continue prototyping and pushing code to another branch which could be named `unstable` or `proto`.
+
+### Adding changes on a whim
+
+We all know that feeling. That feeling when you are thinking of a new feature and are getting really excited to add it and see it in action. It's fun to just add a bunch of cool features, but it is imperative that EVERY THING YOU ADD IS TESTED.
+
+Even by adding 1 minor line of code, you must test the whole function again.
+
+Sounds annoying, but this makes sure we don't have the robot spinning around during autonomous or inverted controls.
+
+If you want to add cool prototype features, you can create a new branch called `unstable` and push to there. Once it is tested and proven to be 100% working, merge with `master`.
+

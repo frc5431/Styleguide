@@ -699,6 +699,8 @@ Basically, make sure the `.set(1.0)` always makes the motor logically go at max 
 
 ### Do it right the first time
 
+![](https://imgs.xkcd.com/comics/fixing_problems.png)
+
 This is difficult for us. We are all guilty of it. That small change that "will be fixed later."
 
 Doing it right the first time prevents stress, breaking down, and bugs later on. It will be hard, but each time you say "I'll fix this later," stop yourself and say "I'll spend 5 minutes now to write it correctly as opposed to spending 10 minutes later fixing it while sleep deprived." You'll thank yourself later when you are sleep deprived staying up until 2 to get Themis a shooter.

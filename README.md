@@ -172,7 +172,7 @@ int longVariable = gatherAshes(
 ```
 
 ### Operators and Math operations
-Put spaces between all operators and math operations so it doesn't look like a bunch of jumbled up math.
+Put spaces between all operators and math operations so it doesn't look like a bunch of jumbled up math. Don't put spaces for parenthesis.
 <br>
 BAD:
 ```java
@@ -225,6 +225,8 @@ int motrPortTwo = 543; //Same as above, mapped to right motor
 //Show users that motors have been initialized
 System.out.println(motorPortOne + System.lineSeperator() + motorPortTwo);
 ```
+
+EXCEPTION: The occasional funny joke is allowed, as long as it's not too distracting and replacing actual important comments.
 
 Multiline comments are mainly used for functions, classes, structs, really important stuff and beginning
 of files.

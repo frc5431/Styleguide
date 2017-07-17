@@ -541,6 +541,52 @@ Another way of explaining it is that whe people read your class, the want to see
 Good documentation plus a consistent ordering = easy to read classes
 Also, brains like patterns, so if every file has the same ordering, you will eventually be used to knowing where to scroll to.
 
+### Exceptions
+
+Functions should validate that their arguments are correct and `throw` otherwise.
+
+Functions should also validate that their preconditions are met, such as all of the `Motors` being initialized, robot being in a certain state, etc. If the function's preconditions are not met, `throw`
+
+Document thrown exceptions in the JavaDoc
+
+Never ignore errors in a `try...catch`. Use an error handler or `printStackTrace()`. If the error must be ignored, print a warning to console.
+
+### Finally
+
+When using a resources that needs to be closed (such as a `FileStream`) use the `try...finally` syntax.
+
+EXAMPLE:
+```java
+BufferedReader r = new BufferedReader(new InputStreamReader(address.openStream()));
+try{
+    String inLine;
+    while ((inLine = r.readLine()) != null) {
+        System.out.println(inLine);
+    }
+}finally{
+    r.close();
+}
+```
+
+*REASONING:*
+This makes sure that streams are always properly closed in the case of an exception
+
+### Lambdas
+
+Use lambda expressions and interfaces to increase modularity in your code.
+
+When defining a functional interface, use the `@FunctionalInterface` annotation:
+```java
+@FunctionalInterface
+public interface Footerface {
+  public void doFoo();
+}
+```
+
+### Overriding
+
+When overriding a function from a parent, use the `@Override` annotation.
+
 ## Coding Style
 
 ### Mappings
@@ -594,6 +640,28 @@ private static final NETWORKTABLE_LOCATION "roborio-frc-5431.local"
 ...
 NetworkTable.get(NETWORKTABLE_LOCATION);
 ```
+
+### Which Robot type to use
+
+Use `IterativeRobot`
+
+*REASONING:*
+We have been using that for 2 years and it has proven us well. Don't change it if it ain't broke.
+
+### Oredering of robot functions
+
+`Robot` class functions will be in this order:
+ * robotInit()
+ * robotPeriodic()
+ * autonomousInit()
+ * autonomousPeriodic()
+ * teleopInit()
+ * teleopPeriodic()
+ * disabledInit()
+ * disabledPeriodic()
+ 
+*REASONING:*
+This order is based on the when the funciton is called during an FRC match combined with common usage. `robotInit()` is always called first, then `autonomousInit()`, then `teleopInit()`. `disabled` is at the end because it is rarely used and not as important as the other functions.
 
 ### Getters and setters
 

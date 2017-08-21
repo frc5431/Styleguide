@@ -72,7 +72,8 @@ BAD:
 enum FOO{
   Bar,
   wOaWvEr,
-  baz
+  baz,
+  iAmBread
 }
 ```
 GOOD:
@@ -80,7 +81,8 @@ GOOD:
 enum Foo {
   BAR,
   WOAWVER,
-  BAZ
+  BAZ,
+  I_AM_BREAD
 }
 ```
 
@@ -123,13 +125,16 @@ Abbreviations should not be used, except for a few special cases. They are as fo
 
 Other approved abbreviations are those that are very commonly used, like DNS for Dynamic Name Service, HTTP for HyperText Transfer Protocol, XML for eXtensible Markup Language, JSON for JavaScript Object Notation, etc.
 
-**EXCEPTION:** if you are writing a `for` loop, `i`, `j`, `x`, and `y` are acceptable iterator names.
+**EXCEPTION:** if you are writing a `for` loop, `i`, `j`, `x`, `y`, and `z` are acceptable iterator names.
 
 ![](https://imgs.xkcd.com/comics/third_way.png)
 
 ### Tabs vs Spaces
 
 We will use tabs, which will be equal to 4 spaces.
+
+*REASONING:*
+Tabs can be configured to be any size on any platform. Plus, they are also a uniform way to keep all indentation the same.
 
 ### Brackets
 
@@ -303,7 +308,7 @@ int a = (1 + b / (s + 2));
 
 ### Newline and escape characters
 
-Instead of `\n` or `\r\n`, use System.lineSeperator()<br>
+Instead of `\n` or `\r\n`, use System.lineSeparator()<br>
 
 BAD:
 ```java
@@ -312,8 +317,11 @@ System.out.println("Hello!\n");
 
 GOOD:
 ```java
-Sysgem.out.println("Hello!" + System.lineSeperator());
+System.out.println("Hello!" + System.lineSeparator());
 ```
+
+*REASONING:*
+Some platforms use `\n`, some use `\r\n`. Hardcoding these values into your program could cause some compatibility issues with other platforms. `System.lineSeparator()` always returns the correct line separator for your platform.
 
 ### Comments
 
@@ -383,7 +391,7 @@ Every function you write should have a JavaDoc comment documenting:
 
 `main()` should always return 0 if the program executed sucessfully. Specific error codes can be returned.
 
-`main()` should not be too long, and no actual computations should be done there. It must only call functions.
+`main()` should not be too long, and no actual computations should be done there. It must only call functions or create variables.
 
 ### Loops
 
@@ -453,7 +461,7 @@ switch(variable) {
 
 Always put `break` unless you intend fallthrough. If you are falling through, put each case on seperate lines.
 
-Always put a `default` case. `default` should always be the very last case, no matter what.
+Always put a `default` case. `default` should always be the very last case, unless you are intentionally falling through with it.
 
 EXAMPLE:
 BAD:
@@ -553,11 +561,11 @@ Never ignore errors in a `try...catch`. Use an error handler or `printStackTrace
 
 ### Finally
 
-When using a resources that needs to be closed (such as a `FileStream`) use the `try...finally` syntax.
+When using a resources that needs to be closed (such as a `FileStream`) use the `try with...finally` syntax.
 
 EXAMPLE:
 ```java
-BufferedReader r = new BufferedReader(new InputStreamReader(address.openStream()));
+final BufferedReader r = new BufferedReader(new InputStreamReader(address.openStream()));
 try{
     String inLine;
     while ((inLine = r.readLine()) != null) {
@@ -565,6 +573,15 @@ try{
     }
 }finally{
     r.close();
+}
+```
+Or even better:
+```java
+try(final BufferedReader r = new BufferedReader(new InputStreamReader(address.openStream()))){
+    String inLine;
+    while ((inLine = r.readLine()) != null) {
+        System.out.println(inLine);
+    }
 }
 ```
 
@@ -587,7 +604,73 @@ public interface Footerface {
 
 When overriding a function from a parent, use the `@Override` annotation.
 
+### Final Variables
+
+Add the `final` keyword to every variable that you can
+
+*CLARIFICATION:*
+In Java, `final` simply means you can't reassign a variable. You can still call all member functions. For example, the following code works:
+```java
+final List<String> out = new ArrayList<String();
+out.add("I can add stuff");
+out.add("Even though it is final!");
+```
+
+This also works:
+```java
+class Position {
+  public int x;
+  public int y;
+  public int z;
+}
+
+final Position pos = new Position();
+pos.x = 5;//even though pos is final, pos.x isn't. Java is weird...
+```
+
+*REASONING:*
+Sounds strange, but adding `final` to every read-only variable, no matter how small, has 2 purposes:
+ * Clarifies confusion to other developers
+ * Allows for the JVM to heavily optimize
+ 
+Once you do it enough, it will become habit to add `final` to a variable by default. Of course, `final` shouldn't be applied to variables you are going to reassign.
+
+### Final classes/methods
+
+If you *really* don't want people to override your class, add `final` to it.
+
 ## Coding Style
+
+### Global Constants
+
+Try to avoid non-constant global variables.
+
+*CLARIFICATION:*
+Global constants are `static` variables.
+
+*REASONING:*
+One of the biggest factors to spaghetti code are global variables. For example, look at this code:
+
+```java
+void doSomething(){
+  OtherClass.foo = "I like spaghetti";
+}
+...
+woawver.doSomething();
+```
+
+This code is a prime example of how spaghetti code is formed. `doSomething()` now affects other classes, so that can cause confusion to anyone using `doSomething()` as to why `OtherClass.foo` suddenly changed value. Plus, anyone trying to read through the code will wonder "What is `OtherClass.foo`?"
+
+The better way to do the above code that isn't a delicious italian product is like this:
+
+```java
+String doSomething(){
+  return "I am still hungry":
+}
+...
+OtherClass.foo = woawver.doSomething()
+```
+This new technique produces completely identical code, adds more versality as now `woawver.doSomething()` can be used anywhere, and reduces confusion. All because you got rid of `static` variables!
 
 ### Mappings
 
@@ -669,7 +752,7 @@ Never use `public` variables. Always use getters and setters.
 
 `protected` and package variables are okay.
 
-**EXCEPTION:** There are very specific cases in which it's okay to use `public`, however those should be evaluated on a case-by-case basis.
+**EXCEPTION:** There are very specific cases in which it's okay to use `public`, however those should be evaluated on a case-by-case basis. Usually, you can use `public` variables in POD (Plain Old Data) classes, where the `class` only contains variables and no methods at all.
 
 *REASONING:*
  * Getters and setters provide more verbosity
@@ -680,6 +763,9 @@ Never use `public` variables. Always use getters and setters.
 ### Casts
 
 Always be as explicit as possible when casting primitive types
+
+*REASONING:*
+The compiler will throw an error or warning when doing a conversion you shouldn't. Plus, explicit casting clarifies any confusion to the compiler or other developers.
 
 ### State Machines
 
@@ -772,6 +858,24 @@ Basically, make sure the `.set(1.0)` always makes the motor logically go at max 
 This is difficult for us. We are all guilty of it. That small change that "will be fixed later."
 
 Doing it right the first time prevents stress, breaking down, and bugs later on. It will be hard, but each time you say "I'll fix this later," stop yourself and say "I'll spend 5 minutes now to write it correctly as opposed to spending 10 minutes later fixing it while sleep deprived." You'll thank yourself later when you are sleep deprived staying up until 2 to get Themis a shooter.
+
+### Versioning
+
+In the `Robot.java` file, add a `public static final String` constant with the name of `ROBOT_VERSION`. Whenever you make a major change to the robot, update this to the date you edited it plus a major feature of this build.
+
+EXAMPLE:
+```java
+public static final ROBOT_VERSION = "8/21/2017 - 10 gear autonomous"
+```
+
+Then, in `robotInit()`, add the following line:
+
+```java
+System.out.println(ROBOT_VERSION);
+```
+
+*REASONING:*
+This is to make sure we always have the right version of the code deployed, whether it be during competition or 2 years after competition.
 
 ## Meta
 

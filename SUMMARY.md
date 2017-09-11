@@ -1,7 +1,6 @@
 # Summary
 
 * [Intro](README.md)
-* If statements
 
 ## Naming Conventions
 
@@ -14,4 +13,7 @@
 
 * [Whitespace](styling/whitespace.md)
 * [Brackets](styling/brackets.md)
+  * [If statements](styling/if-statements.md)
+  * [Line Length](styling/line-length.md)
+  * [Operators](styling/operators.md)
 

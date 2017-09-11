@@ -18,14 +18,14 @@ int thisIsAVariable
 {% sample lang="cpp" -%}
 
 BAD:
-```c++
+```cpp
 int ThisIsAVariable
 int this_is_a_variable
 int thisisavariable
 int thIsiSaVariABLE
 ```
 GOOD:
-```c++
+```cpp
 int thisIsAVariable
 ```
 

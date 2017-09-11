@@ -60,6 +60,7 @@ GOOD:
 void eatWombats() {
   foo();
 }
+```
 
 {% endmethod %}
 

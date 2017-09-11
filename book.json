@@ -11,8 +11,8 @@
         "favicon": "assets/favicon.ico",
         "theme-api": {
             "theme": "dark",
-            "languages": {
-            }
+            "languages": [
+            ]
         }
     },
     "styles": {

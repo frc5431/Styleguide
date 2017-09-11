@@ -19,7 +19,7 @@
                 "default": "true"
             },
             {
-                "lang": "c++",
+                "lang": "cpp",
                 "name": "C++"
             }
             ]

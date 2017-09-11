@@ -15,7 +15,7 @@ GOOD:
 int thisIsAVariable
 ```
 
-{% sample lang="c++" -%}
+{% sample lang="cpp" -%}
 
 BAD:
 ```c++
@@ -49,7 +49,7 @@ int pidControllerState
 int currentTime
 int keyIterator
 ```
-{% sample lang="c++" -%}
+{% sample lang="cpp" -%}
 BAD:
 ```java
 int foo

@@ -12,7 +12,7 @@ Constants always have `static final`
 public static final String THIS_IS_A_CONSTANT = "Constantly following the rules!";
 ```
 
-{% sample lang="c++" -%}
+{% sample lang="cpp" -%}
 
 Constants can be macros or `const` variables. It is highly recommended to make constants `constexpr` and `inline` as well.
 

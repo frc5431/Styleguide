@@ -1,0 +1,19 @@
+{
+    "root": "",
+    "title": "Styleguide",
+    "gitbook": "3.2.2",
+    "plugins": ["-highlight", "mathjax", "prism", "custom-favicon", "themes-api"],
+    "pluginsConfig": {
+        "parts-autoindex": {
+            "level": "1",
+            "trim": "0"
+        },
+        "favicon": "assets/favicon.ico",
+        "theme-default": {
+            "show-level": true
+        }
+    },
+    "styles": {
+        "website": "styles/website.css"
+    }
+}

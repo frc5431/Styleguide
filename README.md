@@ -78,12 +78,18 @@ enum FOO{
 ```
 GOOD:
 ```java
+
+
+`
 enum Foo {
   BAR,
   WOAWVER,
   BAZ,
   I_AM_BREAD
 }
+
+
+
 ```
 
 #### General Rules

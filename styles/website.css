@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+
+.book-body, .book-summary {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.book-body{
+    background: #fff;
+}
+
+.book-summary{
+    background: #828282;
+}
+
+.book-summary ul.summary li a, .book-summary ul.summary li span{
+    color: #00AEED;
+}
+
+.book-summary .header{
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Montserrat", sans-serif;
+}
+
+.book-summary ul.summary li.header{
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    font-size: 20px;
+}

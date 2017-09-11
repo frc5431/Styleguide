@@ -9,8 +9,8 @@
             "trim": "0"
         },
         "favicon": "assets/favicon.ico",
-        "theme-default": {
-            "show-level": true
+        "theme-api": {
+            "theme": "dark"
         }
     },
     "styles": {

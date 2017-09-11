@@ -1,6 +1,5 @@
 # Summary
 
-* [Introduction](README.md)
 * [Intro](intro.md)
 
 ## Naming Conventions

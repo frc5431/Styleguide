@@ -10,7 +10,9 @@
         },
         "favicon": "assets/favicon.ico",
         "theme-api": {
-            "theme": "dark"
+            "theme": "dark",
+            "languages": {
+            }
         }
     },
     "styles": {

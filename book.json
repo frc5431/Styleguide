@@ -11,6 +11,7 @@
         "favicon": "assets/favicon.ico",
         "theme-api": {
             "theme": "dark",
+            "split": true,
             "languages": [
             {
                 "lang":"java",

@@ -16,7 +16,7 @@ public static final String THIS_IS_A_CONSTANT = "Constantly following the rules!
 
 Constants can be macros or `const` variables. It is highly recommended to make constants `constexpr` and `inline` as well.
 
-```
+```cpp
 
 #define FRC5431_CONSTANT_INOPLE 3.45921321 
 
@@ -34,7 +34,7 @@ Functional macros follow the same rules as a normal constant. They must also be 
 #define FRC5431_STRINGIFY(name) #name
 #define FRC5431_SUM(a, b) a + b
 ```
-Functional macros with multiple lines must be wrapped in a `do...while` block for maximum compatibility.
+Functional macros with multiple lines must be wrapped in a `do...while` block
 
 ```cpp
 #define FRC5431_DO_MULTILINE() do{ ... }while(0)

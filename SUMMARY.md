@@ -16,4 +16,5 @@
   * [If statements](styling/if-statements.md)
   * [Line Length](styling/line-length.md)
   * [Operators](styling/operators.md)
+  * [Newlines](styling/newlines.md)
 

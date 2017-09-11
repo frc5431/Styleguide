@@ -35,6 +35,8 @@ int thisIsAVariable
 
 Names should be descriptive, and explain their purpose.
 
+Names should also ALWAYS be nouns, never verbs, never adjectives. If you feel the need to have it's name be a verb, consider a [function](/functions.md) instead.
+
 {% sample lang="java" -%}
 BAD:
 ```java
@@ -65,3 +67,5 @@ int keyIterator
 ```
 
 {% endmethod %}
+
+![](http://www.commitstrip.com/wp-content/uploads/2013/04/Strip-Nom-de-variable-550-finalenglish1.jpg)

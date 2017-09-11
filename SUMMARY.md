@@ -4,6 +4,7 @@
 
 ## Naming Conventions
 
+* [Naming Rules](general-naming.md)
 * [Variables](variable-names.md)
 * [Functions](functions.md)
 * [Constants](constants.md)

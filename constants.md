@@ -36,18 +36,11 @@ Functional macros follow the same rules as a normal constant. They must also be 
 ```
 Functional macros with multiple lines must be wrapped in a `do...while` block for maximum compatibility.
 
+```cpp
+#define FRC5431_DO_MULTILINE() do{ ... }while(0)
+```
 
-
-
-
-
-
-
-
-
-
-
-
+*REASONING:* [See this post for the do...while rule](https://stackoverflow.com/a/1067238)
 
 {% endmethod %}
 

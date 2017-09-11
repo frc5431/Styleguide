@@ -2,7 +2,7 @@
     "root": "",
     "title": "Styleguide",
     "gitbook": "3.2.2",
-    "plugins": ["-highlight", "mathjax", "prism", "custom-favicon", "theme-api"],
+    "plugins": ["-highlight", "-theme-default", "mathjax", "prism", "custom-favicon", "theme-api"],
     "pluginsConfig": {
         "parts-autoindex": {
             "level": "1",

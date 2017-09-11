@@ -13,7 +13,13 @@
             "theme": "dark",
             "languages": [
             {
-                "lang":"java"
+                "lang":"java",
+                "name": "Java",
+                "default": "true"
+            },
+            {
+                "lang": "c++",
+                "name": "C++"
             }
             ]
         }

@@ -7,6 +7,7 @@ Some platforms use `\n`, some use `\r\n`. Hardcoding these values into your prog
 
 {% sample lang="java" -%}
 Use `System.lineSeperator()`
+
 BAD:
 ```java
 System.out.println("Hello!\n");

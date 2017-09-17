@@ -17,4 +17,7 @@
   * [Line Length](styling/line-length.md)
   * [Operators](styling/operators.md)
   * [Newlines](styling/newlines.md)
+  
+## Code Style
+* [Comments](styling/comments.md)
 

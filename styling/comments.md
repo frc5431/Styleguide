@@ -44,10 +44,22 @@ std::cout << motorPortOne << std::endl << motorPortTwo;
 
 {% endmethod %}
 
+{% method -%}
+
 Multiline comments are mainly used for functions, classes, structs, really important stuff and beginning
 of files.
-EXAMPLE: <br>
-```java
+
+Every function you write should have a JavaDoc-like comment documenting:
+ * Parameters
+ * Return value
+ * Exceptions thrown
+ * Preconditions/postconditions of params
+ * Behavior of function
+ 
+ 
+ {% sample lang="java" -%}
+ 
+ ```java
 /*
  * Beginning of file text
  * Created by Robotics Programming
@@ -71,9 +83,36 @@ public class Motor {
 }
 ```
 
-Every function you write should have a JavaDoc comment documenting:
- * Parameters
- * Return value
- * Exceptions thrown
- * Preconditions/postconditions of params
- * Behavior of function
+{% sample lang="cpp" -%}
+
+```cpp
+/*
+ * Beginning of file text
+ * Created by Robotics Programming
+ */
+
+
+#include <iostream>
+#include <WPILib.h>
+ 
+/*
+ * This class handles basic motor control
+ * And movement, mapping -1 - 0 - 1 to a raw value
+ */
+class Motor : public frc::SimpleMotor {
+public:
+  /*
+   * Sets the premapped motor values to a common
+   * One between (Description provided by class)
+   * Careful for explosion of function
+   * No errror handling
+   */
+  void setMotorSpeed(const int newSpeed){
+    ...
+  }
+}
+```
+
+
+
+{% endmethod %}

@@ -1,3 +1,5 @@
+#Brackets
+
 {% method -%}
 When typing anything that requires curly brackets (conditionals, loops, functions, classes, etc), the first bracket goes on the same line as the definition. There is a space between the curly bracket and the end of the definition
 

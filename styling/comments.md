@@ -1,3 +1,5 @@
+#Comments
+
 Comments can get hazy and a little more hazy depending on the program you are using. We would really appreciate it if all coders follow these standards for commenting code.
 
 {% method -%}

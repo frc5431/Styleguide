@@ -1,3 +1,5 @@
+#Main
+
 {% method -%}
 `main()` should always return `0` if the program executed successfully. Specific error codes can be returned.
 

@@ -1,3 +1,5 @@
+#Variables
+
 {% method -%}
 
 You will use camelCase for names of functions and variables, which means no underscores, and every word but the first is capitalized.

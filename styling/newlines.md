@@ -1,3 +1,5 @@
+#Newlines
+
 {% method -%}
 
 Always use the language-specific alternative to a pure newline.

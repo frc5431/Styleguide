@@ -1,3 +1,5 @@
+#Functions
+
 {% method -%}
 Functions follow the same rules as variables, which is camelCase.
 

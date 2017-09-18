@@ -1,3 +1,5 @@
+#Operators
+
 {% method -%}
 
 Put spaces between all multi-operand operators so it doesn't look like a bunch of jumbled up math. Don't put spaces for parenthesis.

@@ -1,3 +1,5 @@
+#If
+
 {% method -%}
 `if` statements always have curly brackets on seperate lines. Even if they are one line statements.
 

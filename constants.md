@@ -1,3 +1,5 @@
+#Constants
+
 {% method -%}
 
 A constant is defined as a variable that can't be changed.

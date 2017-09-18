@@ -1,3 +1,5 @@
+#Goto
+
 ![](https://imgs.xkcd.com/comics/goto.png)
 
 No. Do not use `goto`. If you absolutely have to use a `goto` statement, use a `switch case` instead or restructure your code.

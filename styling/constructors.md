@@ -24,6 +24,10 @@ In `virtual` classes, always declare the destructor `virtual`.
 
 Aggregate initialization for `struct`s is great. Use them.
 
+Not required, but declaring your constructor `noexcept` is good practice.
 
+{% sample lang="java" -%}
+
+When extending a class, always make sure to call `super()` unless the documentation explicitly tells you not to.
 
 {% endmethod %}

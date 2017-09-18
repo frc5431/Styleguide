@@ -1,3 +1,5 @@
+#Switch Case
+
 {% method -%}
 Do not put spaces in the parenthesis of the `switch` declaration.
 {% endmethod %}

@@ -20,10 +20,16 @@
 
 ## Code Style
 
+* [Final](styling/final.md)
+* [Override](styling/override.md)
+* [Lambdas](styling/lambdas.md)
+* [RAII](styling/streams.md)
 * [Comments](styling/comments.md)
 * [Constructors](styling/constructors.md)
+* [Exceptions](styling/exceptions.md)
 * [Switch Case](styling/switch-case.md)
 * [Goto](styling/goto.md)
 * [Loops](styling/loops.md)
 * [Main](styling/main.md)
+* [Members](styling/members.md)
 

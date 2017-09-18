@@ -12,7 +12,6 @@
 ## Styling
 
 * [Whitespace](styling/whitespace.md)
-* [Loops](styling/loops.md)
 * [Brackets](styling/brackets.md)
   * [If statements](styling/if-statements.md)
   * [Line Length](styling/line-length.md)
@@ -22,6 +21,9 @@
 ## Code Style
 
 * [Comments](styling/comments.md)
-* [Main](styling/main.md)
+* [Constructors](styling/constructors.md)
+* [Switch Case](styling/switch-case.md)
 * [Goto](styling/goto.md)
+* [Loops](styling/loops.md)
+* [Main](styling/main.md)
 

@@ -5,8 +5,8 @@
     "plugins": ["parts-autoindex", "custom-favicon", "theme-api"],
     "pluginsConfig": {
         "parts-autoindex": {
-            "level": "1",
-            "trim": "0"
+            "level": 1,
+            "trim": 0
         },
         "favicon": "assets/favicon.ico",
         "theme-api": {

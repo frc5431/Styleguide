@@ -46,3 +46,63 @@ Functional macros with multiple lines must be wrapped in a `do...while` block
 
 {% endmethod %}
 
+{% method -%}
+
+## Global Constants
+
+Try to avoid non-constant global variables.
+
+*CLARIFICATION:*
+Global constants are `static` variables.
+
+{% common -%}
+*REASONING:*
+One of the biggest factors to spaghetti code are global variables. For example, look at this code:
+
+{% sample lang="java" -%}
+```java
+void doSomething(){
+  OtherClass.foo = "I like spaghetti";
+}
+...
+woawver.doSomething();
+```
+
+{% sample lang="cpp" -%}
+```cpp
+void doSomething(){
+  bar::foo = "I like spaghetti";
+}
+...
+doSomething()
+```
+
+{% common -%}
+
+This code is a prime example of how spaghetti code is formed. `doSomething()` now affects other classes and variables, so that can cause confusion to anyone using `doSomething()` as to why the global constant has changed it's value!
+
+The better way to do the above code that isn't a delicious italian product is like this:
+
+{% sample lang="java" -%}
+```java
+String doSomething(){
+  return "I am still hungry":
+}
+...
+OtherClass.foo = woawver.doSomething()
+```
+
+{% sample lang="cpp" -%}
+
+```cpp
+std::string doSomething(){
+  return "I am still hungry";
+}
+...
+bar::foo = doSomething();
+```
+
+{% common -%}
+This new technique produces completely identical code, adds more versality as now `doSomething()` can be used anywhere, and reduces confusion. All because you got rid of global constants!
+
+{% endmethod %}

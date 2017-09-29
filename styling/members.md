@@ -93,3 +93,22 @@ private:
 
 
 {% endmethod %}
+
+{% method -%}
+
+### Getters and setters
+
+Never use `public` variables. Always use getters and setters.
+
+`protected` and package variables are okay.
+
+**EXCEPTION:** There are very specific cases in which it's okay to use `public`, however those should be evaluated on a case-by-case basis. Usually, you can use `public` variables in POD (Plain Old Data) classes, where the `class` only contains variables and no methods at all.
+
+*REASONING:*
+ * Getters and setters provide more verbosity
+ * Can provide argument checking when setting variables
+ * Can check for `null`
+ * More versatility and future-proofing coding
+
+
+{% endmethod %}

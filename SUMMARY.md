@@ -23,8 +23,9 @@
 * [Override](styling/override.md)
 * [Lambdas](styling/lambdas.md)
 * [RAII](styling/streams.md)
-* [WPILib](styling/wpilib.md)
+* [Robot](styling/wpilib.md)
 * [Comments](styling/comments.md)
+* [Casts](styling/types.md)
 * [Constructors](styling/constructors.md)
 * [Constants](constants.md)
 * [Exceptions](styling/exceptions.md)
@@ -34,4 +35,11 @@
 * [Main](styling/main.md)
 * [Members](styling/members.md)
 * [Mappings](styling/mappings.md)
+
+## Meta
+
+* [Github](github.md)
+* [Versioning](versioning.md)
+* [Licensing](licensing.md)
+* [Changes on a Whim](changes-on-a-whim.md)
 

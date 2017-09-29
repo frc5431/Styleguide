@@ -1,3 +1,5 @@
+https://frc5431.gitbooks.io/styleguide/
+
 We need to establish a coding standard, so all of our code looks the same. This will be an extensive document, and will talk about things you don't know yet. If you don't know what a certain clause refers to, then you can ignore it for now.
 
 ![](https://imgs.xkcd.com/comics/standards.png)

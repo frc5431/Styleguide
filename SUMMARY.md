@@ -7,7 +7,6 @@
 * [Naming Rules](general-naming.md)
 * [Variables](variable-names.md)
 * [Functions](functions.md)
-* [Constants](constants.md)
 
 ## Styling
 
@@ -26,6 +25,7 @@
 * [RAII](styling/streams.md)
 * [Comments](styling/comments.md)
 * [Constructors](styling/constructors.md)
+* [Constants](constants.md)
 * [Exceptions](styling/exceptions.md)
 * [Switch Case](styling/switch-case.md)
 * [Goto](styling/goto.md)

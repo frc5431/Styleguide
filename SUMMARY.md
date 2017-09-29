@@ -32,4 +32,5 @@
 * [Loops](styling/loops.md)
 * [Main](styling/main.md)
 * [Members](styling/members.md)
+* [Mappings](styling/mappings.md)
 

@@ -106,3 +106,47 @@ bar::foo = doSomething();
 This new technique produces completely identical code, adds more versality as now `doSomething()` can be used anywhere, and reduces confusion. All because you got rid of global constants!
 
 {% endmethod %}
+
+{% method -%}
+
+## Magic Constants
+
+![](https://imgs.xkcd.com/comics/int_pi.png)
+
+A magic constant is a literal in your code that doesn't have any meaning or explanation. 
+
+Instead of embedding literals into code, create a constant at the top of the file to reduce spatghetti code and allow for more configurability.
+
+{% sample lang="java" -%}
+
+BAD:
+```java
+NetworkTable.get("roborio-frc-5431.local");//"roborio-frc-5431.local" is a magic constant
+```
+
+GOOD:
+```java
+private static final NETWORKTABLE_LOCATION "roborio-frc-5431.local"
+
+...
+NetworkTable.get(NETWORKTABLE_LOCATION);
+```
+
+{% sample lang="cpp" -%}
+
+You can use `#define` or `const constexpr` constants.
+
+BAD:
+```cpp
+NetworkTable::get("roborio-frc-5431.local");//"roborio-frc-5431.local" is a magic constant
+```
+
+GOOD:
+```cpp
+#define FRC5431_NETWORKTABLE_LOCATION "roborio-frc-5431.local"
+
+...
+NetworkTable::get(FRC5431_NETWORKTABLE_LOCATION);
+```
+
+{% endmethod %}

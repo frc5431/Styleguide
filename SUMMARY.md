@@ -23,6 +23,7 @@
 * [Override](styling/override.md)
 * [Lambdas](styling/lambdas.md)
 * [RAII](styling/streams.md)
+* [WPILib](styling/wpilib.md)
 * [Comments](styling/comments.md)
 * [Constructors](styling/constructors.md)
 * [Constants](constants.md)
